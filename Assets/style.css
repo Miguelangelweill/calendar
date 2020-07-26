@@ -1,0 +1,40 @@
+body{
+    font-family: 'Orbitron', sans-serif;
+}
+#date {
+    font-size: 35px;
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    background-color: black;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-left:5% ;
+    margin-top: 2%;
+    display: inline-block;
+    min-width: 295px;
+    max-width: 295px;
+}
+#head {
+    font-size: 35px;
+    display: flex;
+    align-items: center;
+    margin-left:5% ;
+}
+#mainContainer {
+    border: solid 1px black;
+    width: 90%;
+    margin: 5%;
+    align-self: center;
+}
+label {
+    padding: 2%;
+    background-color: lightblue;
+    margin: 0%;
+    border: solid 1px black;
+}
+button{
+    float: right;
+}
+input{
+    width: 100%;
+}
