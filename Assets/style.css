@@ -30,11 +30,15 @@ body{
 #save{
     margin-right: 1%;
 }
-label {
+div {
     padding: 2%;
     background-color: lightblue;
     margin: 0%;
     border: solid 1px black;
+    
+}
+label{
+    width: 100%;
 }
 button:hover{
     background-color: rgb(83, 206, 251);
