@@ -1,24 +1,25 @@
 body{
     font-family: 'Orbitron', sans-serif;
 }
-#date {
+#datetime {
     font-size: 35px;
     font-family: 'Orbitron', sans-serif;
     color: white;
     background-color: black;
     padding-top: 2%;
-    padding-bottom: 2%;
     margin-left:5% ;
     margin-top: 2%;
     display: inline-block;
-    min-width: 295px;
-    max-width: 295px;
+    min-width: 350px;
+    max-width: 300px;
+    text-align: center;
 }
 #head {
     font-size: 35px;
     display: flex;
     align-items: center;
-    margin-left:5% ;
+    margin-left:5%;
+    right: ;
 }
 #mainContainer {
     border: solid 1px black;
@@ -26,11 +27,17 @@ body{
     margin: 5%;
     align-self: center;
 }
+#save{
+    margin-right: 1%;
+}
 label {
     padding: 2%;
     background-color: lightblue;
     margin: 0%;
     border: solid 1px black;
+}
+button:hover{
+    background-color: rgb(83, 206, 251);
 }
 button{
     float: right;
