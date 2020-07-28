@@ -6,30 +6,45 @@ $(document).ready(function () {
     );
   };
   setInterval(update, 1000);
-  //HERE WE CREATE A LIBRARY FOR THE INPUT INFORMATION
 
-  //THERE MUST BE A WAY TO MAKE AN OBJECT WITH ALL OF THE TIMES AND PUSH THE VALUE OF THIS ELEMENT THAT WAS CLICKED Matching it with the id 
-  var library = [
+  //HERE I AM ABLE TO STORE THE INDIVIDUAL VALUES OF THE INPUTS TARGETTING THEM BY THEIR ID
+  var library = {
+    "9am": $("#9am").val(),
+    "10am": $("#10am").val(),
+    "11am": $("#11am").val(),
+    "12pm": $("#12pm").val(),
+    "1pm": $("#1pm").val(),
+    "2pm": $("#2pm").val(),
+    "3pm": $("#3pm").val(),
+    "4pm": $("#4pm").val(),
+    "5pm": $("#5pm").val()
+  };
 
-  ];
-
+  
   $("button").click(function (event) {
     //HERE WE WANT TO GET THE INFORMATION FROM MY INPUT ELEMENT AND SE IT INTO MY LIBRARY
-        if ($(this).prev().val()) {
-      var toDo = $(this).prev().val();
-      library.push(toDo);
-      console.log(library);
-    }
-    //ASK IF THERE IS A WAY TO MATCH THE ID OF THIS ELEMENT THAT HAS BEEN CLICKED 
+    if ($(this).prev().val()) {
+      //this gives me the id of the element that was clicked
+      var timeToDo = $(this).prev().val();
+      var newTime = $(this).prev().attr('id')
+      library[newTime]=timeToDo;
+      
 
-    //HERE WE WANT TO SAVE INTO THE LOCAL STORAGE THE NEW VALUE OF LIBRARY AFTER EVERY PUSH
-    localStorage.setItem("the to do:", library);
-    var getToDo =localStorage.getItem('the to do;');
-    $('input').text(getToDo);
+    }
+    //here we are saving our new current library inside of the library
+    localStorage.setItem("library",JSON.stringify(library));
   });
   //here i obvously get all of the items that were pushed into my library so how can i identify them by their id ?
-  $('#9am').val(localStorage.getItem("the to do:"))
+  
+//HERE I CONTROL THE BACKGROUND COLORS DEPENDING ON THE TIME OF THE DAY
+  var nineish = localStorage.getItem('library');
+  var nineAm = nineish["9am"];
+  console.log(nineAm);
+
+
 
 });
 
 
+//NEED TO LINK THE TIME OF MY TODO'S TO THE CLOCK SO IF THE TIME HAS PASSED IT WONT ALLOW FOR IT TO BE TYPED IN OR EDITED
+// IF POSSIBLE MAKE A LOOP OR A FUNCTION THAT EVERYTIME I RUN IT IT CRAETES A NEW BLOCK OF INPUT , AND HAVE A COUNTER THAT EVERYTIME THE LOOP RUNS IT SHOULD ADD ONE VALUE TO THE CURRENT TIME DISPLAYED (BUT HOW WOULD I DO IT FROM 12-12 AND NOT THE WHOLE 24 HOUR SITUATION?)
