@@ -1,50 +1,61 @@
-body{
-    font-family: 'Orbitron', sans-serif;
+body {
+  font-family: "Orbitron", sans-serif;
 }
 #datetime {
-    font-size: 35px;
-    font-family: 'Orbitron', sans-serif;
-    color: white;
-    background-color: black;
-    padding-top: 2%;
-    margin-left:5% ;
-    margin-top: 2%;
-    display: inline-block;
-    min-width: 350px;
-    max-width: 300px;
-    text-align: center;
+  font-size: 35px;
+  font-family: "Orbitron", sans-serif;
+  color: white;
+  background-color: black;
+  padding-top: 2%;
+  margin-left: 5%;
+  margin-top: 2%;
+  display: inline-block;
+  min-width: 350px;
+  max-width: 300px;
+  text-align: center;
 }
 #head {
-    font-size: 35px;
-    display: flex;
-    text-align: right;
-    margin-left: 4%;
+  font-size: 35px;
+  display: flex;
+  text-align: right;
+  margin-left: 4%;
 }
 #mainContainer {
-    border: solid 1px black;
-    width: 90%;
-    margin: 5%;
-    align-self: center;
+  border: solid 1px black;
+  width: 90%;
+  margin: 5%;
+  align-self: center;
 }
-#save{
-    margin-right: 1%;
+#save {
+  margin-right: 1%;
 }
 div {
-    padding: 2%;
-    background-color: lightblue;
-    margin: 0%;
-    border: solid 1px black;
-    
+  padding: 2%;
+  background-color: lightblue;
+  margin: 0%;
+  border: solid 1px black;
 }
-label{
-    width: 100%;
+label {
+  width: 100%;
 }
-button:hover{
-    background-color: rgb(83, 206, 251);
+button:hover {
+  background-color: rgb(83, 206, 251);
 }
-button{
-    float: right;
+button {
+  float: right;
 }
-input{
-    width: 100%;
+.delete{
+    margin-right: 1%;
+}
+input {
+  width: 100%;
+}
+.past {
+  background: "grey";
+}
+.current {
+  background: red;
+}
+.future {
+  background: green;
 }
