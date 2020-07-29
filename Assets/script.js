@@ -6,73 +6,58 @@ $(document).ready(function () {
     );
   };
   setInterval(update, 1000);
-  //HERE I AM ABLE TO STORE THE INDIVIDUAL VALUES OF THE INPUTS TARGETTING THEM BY THEIR ID
-
-  var library = {
-    "9am": $("#9am").val(),
-    "10am": $("#10am").val(),
-    "11am": $("#11am").val(),
-    "12pm": $("#12pm").val(),
-    "1pm": $("#1pm").val(),
-    "2pm": $("#2pm").val(),
-    "3pm": $("#3pm").val(),
-    "4pm": $("#4pm").val(),
-    "5pm": $("#5pm").val(),
-  };
+ 
+  var library = {};
+ //here i check if there is exsisting values inside of the local storage when the page first loads
+  if (localStorage.getItem("library")) {
+    var localTodo = JSON.parse(localStorage.getItem("library"));
+    $("#9am").val(localTodo["9am"]);
+    $("#10am").val(localTodo["10am"]);
+    $("#11am").val(localTodo["11am"]);
+    $("#12pm").val(localTodo["12pm"]);
+    $("#1pm").val(localTodo["1pm"]);
+    $("#2pm").val(localTodo["2pm"]);
+    $("#3pm").val(localTodo["3pm"]);
+    $("#4pm").val(localTodo["4pm"]);
+    $("#5pm").val(localTodo["5pm"]);
+  }
 
   $(".save").click(function (event) {
-    event.preventDefault();
     //HERE WE WANT TO GET THE INFORMATION FROM MY INPUT ELEMENT AND SE IT INTO MY LIBRARY
     if ($(this).prev().val()) {
-      //this will give us the value of the previous element before the button which is the input
+      event.preventDefault();
       var timeToDo = $(this).prev().val();
-      //this gives me the id of the element in the previous position from the button
       var newTime = $(this).prev().attr("id");
       library[newTime] = timeToDo;
-      //when you click the button to save this changes the text in the button from save to saved 
       $(this).text("saved");
-      //this is what gives the effect when we save our item
       $(this).prev().animate({
         height: "toggle",
       });
-    }
 
-    //here we are saving our new current library inside of the library
-    localStorage.setItem("library", JSON.stringify(library));
+      //here we are saving our new current library inside of the library
+    }
+    library = {
+      "9am": $("#9am").val(),
+      "10am": $("#10am").val(),
+      "11am": $("#11am").val(),
+      "12pm": $("#12pm").val(),
+      "1pm": $("#1pm").val(),
+      "2pm": $("#2pm").val(),
+      "3pm": $("#3pm").val(),
+      "4pm": $("#4pm").val(),
+      "5pm": $("#5pm").val(),
+    };
+    var myValues = JSON.stringify(library);
+    localStorage.setItem("library", myValues);
   });
-  //here i am getting the individual values back from local storage 
-  var localTodo = JSON.parse(localStorage.getItem("library"));
-  var nineAm = localTodo['9am'];
-  localTodo = JSON.parse(localStorage.getItem("library"));
-  var tenAm = localTodo['10am'];
-  localTodo = JSON.parse(localStorage.getItem("library"));
-  var ellevenAm = localTodo['11am'];
-  localTodo = JSON.parse(localStorage.getItem("library"));
-  var twelvePm = localTodo['12pm'];
-  localTodo = JSON.parse(localStorage.getItem("library"));
-  var onePm = localTodo['1pm'];
-  localTodo = JSON.parse(localStorage.getItem("library"));
-  var twoPm = localTodo['2pm'];
-  localTodo = JSON.parse(localStorage.getItem("library"));
-  var threePm = localTodo['3pm'];
-  localTodo = JSON.parse(localStorage.getItem("library"));
-  var fourPm = localTodo['4pm'];
-  localTodo = JSON.parse(localStorage.getItem("library"));
-  var fivePm = localTodo['5pm'];
+
+  //here i am getting the individual values back from local storage
+
   //this is how i display the values in the local storage after the page is being refreshed
-    $("#9am").val(nineAm);
-    $("#10am").val(tenAm);
-    $("#11am").val(ellevenAm);
-    $("#12pm").val(twelvePm);
-    $("#1pm").val(onePm);
-    $("#2pm").val(twoPm);
-    $("#3pm").val(threePm);
-    $("#4pm").val(fourPm);
-    $("#5pm").val(fivePm);
-    
+
   //if the value inside of the function exsist run it else nothing
-  var timeTimer =parseInt( moment().format("H"));
-   
+  var timeTimer = parseInt(moment().format("H"));
+
   if (timeTimer > 9) {
     $(".event1").addClass("past");
   } else if (timeTimer < 9) {
@@ -153,10 +138,11 @@ $(document).ready(function () {
     $(".event9").addClass("current");
   } else {
   }
-  
 
- //Delete button$
-
+  //Delete button$
+  $(".delete").click(function(){
+    localStorage.clear()
+  })
 });
 
 //NEED TO LINK THE TIME OF MY TODO'S TO THE CLOCK SO IF THE TIME HAS PASSED IT WONT ALLOW FOR IT TO BE TYPED IN OR EDITED
