@@ -45,7 +45,8 @@ button {
   float: right;
 }
 .delete{
-    margin-right: 1%;
+    text-align: center;
+    width: 100%;
 }
 input {
   width: 100%;
@@ -58,4 +59,7 @@ input {
 }
 .future {
   background: green;
+}
+form{
+  background-color: lightblue;
 }

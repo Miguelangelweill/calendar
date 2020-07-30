@@ -5,6 +5,7 @@ $(document).ready(function () {
       "MMMM Do YYYY, h:mm a"
     );
   };
+  update()
   setInterval(update, 1000);
  
   var library = {};
@@ -30,7 +31,11 @@ $(document).ready(function () {
       var newTime = $(this).prev().attr("id");
       library[newTime] = timeToDo;
       $(this).text("saved");
+      
+
       $(this).prev().animate({
+              height: "toggle",
+      }).delay(100).animate({
         height: "toggle",
       });
 
@@ -56,6 +61,7 @@ $(document).ready(function () {
   //this is how i display the values in the local storage after the page is being refreshed
 
   //if the value inside of the function exsist run it else nothing
+  function timeColor(){
   var timeTimer = parseInt(moment().format("H"));
 
   if (timeTimer > 9) {
@@ -138,10 +144,12 @@ $(document).ready(function () {
     $(".event9").addClass("current");
   } else {
   }
-
+}
+setInterval(timeColor,1800000*2)
   //Delete button$
   $(".delete").click(function(){
     localStorage.clear()
+    $('.input').val('')
   })
 });
 
