@@ -61,7 +61,7 @@ $(document).ready(function () {
   //this is how i display the values in the local storage after the page is being refreshed
 
   //if the value inside of the function exsist run it else nothing
-  function timeColor(){
+  
   var timeTimer = parseInt(moment().format("H"));
 
   if (timeTimer > 9) {
@@ -144,13 +144,28 @@ $(document).ready(function () {
     $(".event9").addClass("current");
   } else {
   }
-}
-setInterval(timeColor,1800000*2)
+
+
+//this works but my bug is on line 159
+  if (localStorage.getItem('isCliked')){
+    $('.finished').css('background-color', 'green');
+  }
+  $('.finished').on('click', function (event) {
+    event.preventDefault();
+    $(this).css('background-color', 'green');
+    $(this).css('color', 'white');
+    // set the value upon clicking
+    localStorage.setItem('isCliked', true)
+  });
+
   //Delete button$
   $(".delete").click(function(){
     localStorage.clear()
     $('.input').val('')
-  })
+    $('.finished').css('background-color', 'white');
+    $('.finished').css('color', 'black');
+
+})
 });
 
 //NEED TO LINK THE TIME OF MY TODO'S TO THE CLOCK SO IF THE TIME HAS PASSED IT WONT ALLOW FOR IT TO BE TYPED IN OR EDITED
